@@ -1,0 +1,87 @@
+.listSection {
+  flex: 1;
+  background-color: #262626;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: space-evenly;
+}
+
+.gridAndControlsWrapper {
+  display: flex;
+  gap: 15px;
+  flex-grow: 1;
+}
+
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  padding-bottom: 60px;
+}
+
+.grid::-webkit-scrollbar {
+  width: 4px;
+}
+
+.grid::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+.sideControls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.pageBtn {
+  background-color: #8c8c8c;
+  color: #e0e0e0;
+  border: none;
+  border-radius: 6px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pageBtn:hover:not(:disabled) {
+  color: #8cc63f;
+}
+
+.pageBtn:active:not(:disabled) {
+  background-color: #313131;
+  color: #8cc63f;
+  transform: scale(0.95);
+}
+
+.pageBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .listSection {
+    padding: 20px;
+    height: auto;
+  }
+
+  .grid {
+    gap: 15px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

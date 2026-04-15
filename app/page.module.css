@@ -1,0 +1,30 @@
+.container {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: white;
+  font-family: system-ui, -apple-system, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  min-height: 720px;
+  background-color: #262626;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    height: auto;
+    min-height: unset;
+  }
+}

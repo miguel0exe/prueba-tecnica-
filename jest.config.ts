@@ -5,7 +5,6 @@ const createJestConfig = nextJest({
   dir: './',
 })
 
-// Configuración base de Jest
 const config: Config = {
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',

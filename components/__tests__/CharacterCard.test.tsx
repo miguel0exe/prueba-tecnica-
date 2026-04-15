@@ -8,7 +8,8 @@ jest.mock('../../store/useFavoritesStore');
 jest.mock('next/image', () => ({
   __esModule: true,
   default: (props: any) => {
-    return <img {...props} fill={undefined} priority={undefined} />;
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img alt={props.alt || "mocked image"} {...props} fill={undefined} priority={undefined} />;
   },
 }));
 

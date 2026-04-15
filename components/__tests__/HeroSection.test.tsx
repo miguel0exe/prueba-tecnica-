@@ -2,11 +2,13 @@ import { render, screen } from '@testing-library/react';
 import { useFavoritesStore } from '../../store/useFavoritesStore';
 import HeroSection from '../HeroSection';
 
-// Mockeamos Zustand y next/image
 jest.mock('../../store/useFavoritesStore');
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: (props: any) => <img {...props} fill={undefined} priority={undefined} />,
+  default: (props: any) => {
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img alt={props.alt || "mocked image"} {...props} fill={undefined} priority={undefined} />;
+  },
 }));
 
 describe('Componente: HeroSection', () => {
@@ -45,6 +47,6 @@ describe('Componente: HeroSection', () => {
     
     expect(screen.getByText('Morty Smith')).toBeInTheDocument();
     expect(screen.getByText('VIVO')).toBeInTheDocument();
-    expect(screen.getByText('3')).toBeInTheDocument(); // length del array de episodios
+    expect(screen.getByText('3')).toBeInTheDocument(); 
   });
 });

@@ -7,32 +7,32 @@ Este proyecto es una aplicación web desarrollada con **Next.js (React 19)** y *
 Para ejecutar este proyecto localmente, necesitas tener Node.js instalado.
 
 1. **Instalar dependencias:**
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
-
+   ```
 2. **Levantar la base de datos simulada (JSON Server):**
    En una terminal, ejecuta el siguiente comando para levantar el servidor en el puerto 4000. Esto es necesario para la funcionalidad de Favoritos.
-   \`\`\`bash
+   ```bash
    npm run server
-   \`\`\`
+   ```
 
 3. **Levantar el entorno de desarrollo:**
    Abre una segunda terminal y ejecuta:
-   \`\`\`bash
+   ```bash
    npm run dev
-   \`\`\`
+   ```
    La aplicación estará disponible en `http://localhost:3000`.
 
 4. **Correr Pruebas Unitarias:**
    El proyecto cuenta con pruebas unitarias usando Jest y React Testing Library.
-   \`\`\`bash
+   ```bash
    npm run test
-   \`\`\`
+   ```
+
 
 ---
 
-## 💡 Preguntas del Assessment
+## 💡 Preguntas 
 
 ### ¿Qué es lo que más te gustó de TU desarrollo?
 Lo que más disfruté fue aplicar principios de **Diseño Atómico** y la modularización de la arquitectura. En lugar de tener un único componente monolítico, logré separar la lógica en componentes reutilizables y tipados con TypeScript (`CharacterCard`, `FavsMenu`). Además, la integración de **Zustand** para el manejo del estado global resultó en un flujo de datos muy limpio, eliminando por completo el problema de *prop drilling* entre los componentes y facilitando la escalabilidad del proyecto.
@@ -48,7 +48,7 @@ Durante el desarrollo me encontré con dos retos técnicos interesantes:
 
 **1. Bug en el código base: Mal parseo de la URL de la API**
 Al revisar el repositorio inicial proporcionado, detecté un bug crítico en la función encargada de traer los datos (`getCharacters`). La URL de la API estaba mal construida y harcodeada, lo que generaba un mal parseo y rompía las peticiones de red.
-**Solución:** En lugar de simplemente corregir el string de la URL, decidí resolver el problema de raíz implementando una arquitectura más limpia. Creé un módulo de servicios dedicado (`services/rickMortyService.ts`) para abstraer toda la comunicación externa. Esto no solo solucionó el bug, sino que centralizó los métodos (`getCharacters`, `getCharacterByName`), permitió un tipado estricto con TypeScript para las respuestas de la API, y dejó a los componentes de UI completamente libres de lógica de *fetch*.
+**Solución:** En lugar de simplemente corregir el string de la URL, decidí resolver el problema de raíz implementando una arquitectura más limpia. Creé un módulo de servicios dedicado (`services/rickMorty.ts`) para abstraer toda la comunicación externa. Esto no solo solucionó el bug, sino que centralizó los métodos (`getCharacters`, `getCharacterByName`), permitió un tipado estricto con TypeScript para las respuestas de la API, y dejó a los componentes de UI completamente libres de lógica de *fetch*.
 
 **2. Renders en cascada por inicialización síncrona en useEffect**
 Al conectar el estado global (Zustand) con la carga inicial de datos desde el servicio, me topé con el error de React: *"Calling setState synchronously within an effect can trigger cascading renders"*. 

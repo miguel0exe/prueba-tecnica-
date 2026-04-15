@@ -6,7 +6,7 @@ interface StoreState {
   selectedCharacter: Character | null;
   fetchFavorites: () => Promise<void>;
   toggleFavorite: (character: Character) => Promise<void>;
-  isFavorite: (id: number) => boolean;
+  isFavorite: (id: number | string) => boolean; 
   setSelectedCharacter: (character: Character) => void;
 }
 
@@ -25,30 +25,39 @@ export const useFavoritesStore = create<StoreState>((set, get) => ({
   },
 
   toggleFavorite: async (character) => {
-    const { favorites } = get();
-    const exists = favorites.find((fav) => fav.id === character.id);
+  const { favorites } = get();
+  
+  const exists = favorites.find((fav) => String(fav.id_character) === String(character.id));
 
-    try {
-      if (exists) {
-        await fetch(`http://localhost:4000/favorites/${character.id}`, { 
-          method: 'DELETE' 
-        });
-        set({ favorites: favorites.filter((fav) => fav.id !== character.id) });
-      } else {
-        await fetch('http://localhost:4000/favorites', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(character),
-        });
-        set({ favorites: [...favorites, character] });
-      }
-    } catch (error) {
-      console.error("Error al actualizar favorito:", error);
+  try {
+    if (exists) {
+      await fetch(`http://localhost:4000/favorites/${exists.id}`, { 
+        method: 'DELETE' 
+      });
+      
+      set({ 
+        favorites: favorites.filter((fav) => String(fav.id_character) !== String(character.id)) 
+      });
+    } else {
+      const response = await fetch('http://localhost:4000/favorites', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...character,
+          id_character: String(character.id) 
+        }),
+      });
+
+      const newFavorite = await response.json();
+      set({ favorites: [...favorites, newFavorite] });
     }
-  },
-
+  } catch (error) {
+    console.error("Error al sincronizar con json-server:", error);
+  }
+},
   isFavorite: (id) => {
-    return get().favorites.some((fav) => fav.id === id);
+    console.log(get().favorites.some((fav) => String(fav.id_character) === String(id)), id);
+    return get().favorites.some((fav) => String(fav.id_character) === String(id));
   },
 
   setSelectedCharacter: (character) => {

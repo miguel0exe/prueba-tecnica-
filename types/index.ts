@@ -6,6 +6,7 @@ export interface Location {
 
 export interface Character {
   id: number;
+  id_character?: number;
   name: string;
   status: 'Alive' | 'Dead' | 'unknown';
   species: string;

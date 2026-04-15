@@ -1,0 +1,71 @@
+.card {
+  background-color: #1e1e1e;
+  border: 2px solid transparent;
+  text-align: center;
+  border-radius: 30px;
+  padding: 10px 15px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  height: fit-content;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  background: #4F4F4FCC;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.activeCard {
+  border-color: #8cc63f;
+}
+
+.cardTitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 10px 0;
+  color: #fff;
+  font-weight: 600;
+}
+
+.cardImageWrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cardImage {
+  object-fit: cover;
+}
+
+.likeBtn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.likeBtn:hover {
+  color: #ff4b4b;
+}
+
+.liked {
+  color: #ff4b4b !important;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 10px;
+  }
+}

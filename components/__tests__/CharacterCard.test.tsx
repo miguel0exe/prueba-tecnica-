@@ -12,7 +12,6 @@ jest.mock('next/image', () => ({
   },
 }));
 
-// Personaje falso para el test
 const mockCharacter: Character = {
   id: 1,
   name: 'Rick Sanchez',

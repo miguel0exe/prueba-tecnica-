@@ -35,7 +35,7 @@ Para ejecutar este proyecto localmente, necesitas tener Node.js instalado.
 ## 💡 Preguntas del Assessment
 
 ### ¿Qué es lo que más te gustó de TU desarrollo?
-Lo que más disfruté fue aplicar principios de **Diseño Atómico** y la modularización de la arquitectura. En lugar de tener un único componente monolítico, logré separar la lógica en componentes reutilizables y tipados con TypeScript (ej. `CharacterCard`, `FavsMenu`). Además, la integración de **Zustand** para el manejo del estado global resultó en un flujo de datos muy limpio, eliminando por completo el problema de *prop drilling* entre los componentes y facilitando la escalabilidad del proyecto.
+Lo que más disfruté fue aplicar principios de **Diseño Atómico** y la modularización de la arquitectura. En lugar de tener un único componente monolítico, logré separar la lógica en componentes reutilizables y tipados con TypeScript (`CharacterCard`, `FavsMenu`). Además, la integración de **Zustand** para el manejo del estado global resultó en un flujo de datos muy limpio, eliminando por completo el problema de *prop drilling* entre los componentes y facilitando la escalabilidad del proyecto.
 
 ### Si hubieras tenido más tiempo ¿qué hubieras mejorado o qué más hubieras hecho?
 1. **Paginación Infinita / Virtualización:** Implementaría un scroll infinito o virtualización de listas (con algo como `react-window`) para manejar escenarios donde la búsqueda arroje cientos de resultados sin penalizar el rendimiento del DOM.
